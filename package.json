@@ -1,0 +1,25 @@
+{
+  "name": "notification-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass app/src/scss/main.scss app/public/dist/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrambzgh/notification-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrambzgh/notification-page/issues"
+  },
+  "homepage": "https://github.com/akrambzgh/notification-page#readme",
+  "dependencies": {
+    "dart-sass": "^1.25.0",
+    "saas": "^1.0.0",
+    "sass": "^1.57.1"
+  }
+}
