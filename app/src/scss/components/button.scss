@@ -1,0 +1,54 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  @include mix.flex(space-between, center, row);
+  @include mix.smallScreen() {
+    top: 110%;
+    left: -6.5%;
+    background-color: map-get($map: vars.$natural, $key: "White");
+    width: 111.6%;
+    padding: 74px 50px 0;
+    @include mix.flex(space-between, center, row);
+  }
+  span.next {
+    padding: 14px 7px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    color: map-get($map: vars.$natural, $key: "White");
+    background-color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+    display: block;
+    width: 119px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    &.info-btn {
+      margin-left: 81%;
+    }
+    &.plan-btn {
+      margin-left: 74%;
+    }
+    @include mix.smallScreen() {
+      position: absolute;
+      top: 10.3px;
+      width: 119px;
+      right: 6px;
+    }
+  }
+  span.go-back {
+    display: block;
+    width: 81px;
+    color: map-get($map: vars.$natural, $key: "CoolGray");
+    font-size: 18px;
+    font-weight: 400;
+    @include mix.smallScreen() {
+      transform: translateY(-37px);
+    }
+  }
+}

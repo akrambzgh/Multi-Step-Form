@@ -1,0 +1,35 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+body {
+  background-color: map-get($map: vars.$natural, $key: "Magnolia");
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  @include mix.flex(center, center, row);
+  @include mix.smallScreen() {
+    @include mix.flex(center, flex-start, row);
+  }
+}
+
+main.main {
+  width: 80%;
+  height: 90%;
+  // position: relative;
+  border-radius: 10px;
+  padding: 0 150px 0 10px;
+  @include mix.flex(flex-start, center, row);
+  gap: 150px;
+  @media screen and (max-width: 991px) and (min-width: 768px) {
+    width: 90%;
+    padding: 0 50px 0 10px;
+    gap: 50px;
+  }
+  @include mix.smallScreen() {
+    width: 96%;
+    height: 0;
+    @include mix.flex(flex-start, flex-start, row);
+  }
+}

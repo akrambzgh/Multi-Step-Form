@@ -1,0 +1,54 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+.steps {
+  z-index: 15;
+  flex: 1;
+  height: 90%;
+  box-shadow: none;
+  @include mix.flex(flex-start, center, row);
+  position: relative;
+  @include mix.smallScreen() {
+    position: absolute;
+    top: 120px;
+    width: 96%;
+    left: 2%;
+    height: auto;
+    border-radius: 10px;
+    padding-left: 15px;
+  }
+  .step-box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 300ms;
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    @include mix.smallScreen() {
+      position: relative;
+      height: auto;
+      padding-bottom: 10px;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    h1 {
+      color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+      font-size: 3vmax;
+      margin-bottom: 1vmax;
+      letter-spacing: 1px;
+    }
+    p {
+      color: map-get($map: vars.$natural, $key: "CoolGray");
+      letter-spacing: 0.7px;
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}

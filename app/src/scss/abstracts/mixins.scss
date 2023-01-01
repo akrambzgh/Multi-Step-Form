@@ -6,16 +6,16 @@
 }
 
 @mixin smallScreen() {
-  @media (max-width: 992px) {
+  @media (max-width: 767px) {
     @content;
   }
 }
 
-@mixin imageSet($url) {
+@mixin imageSet($url, $size) {
   background-image: url($url);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: $size;
 }
 
 @mixin position($ps, $tp, $lf) {

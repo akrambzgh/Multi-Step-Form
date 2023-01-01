@@ -1,0 +1,91 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+aside {
+  @include mix.imageSet(
+    "../../../../assets/images/bg-sidebar-desktop.svg",
+    cover
+  );
+
+  width: 274px;
+  height: calc(100% - 20px);
+  border-radius: 10px;
+  @include mix.smallScreen() {
+    position: absolute;
+    left: -2%;
+    top: 0;
+    border-radius: 0;
+    height: 172px;
+    width: 104%;
+    @include mix.imageSet(
+      "../../../../assets/images/bg-sidebar-mobile.svg",
+      cover
+    );
+  }
+  ul.steps-list {
+    height: 100%;
+    @include mix.flex(flex-start, flex-start, column);
+    padding: 10px 30px;
+    @include mix.smallScreen() {
+      @include mix.flex(center, center, row);
+    }
+    li {
+      @include mix.flex(flex-start, center, row);
+      cursor: pointer;
+      user-select: none;
+      transition: 300ms;
+      &:not(:last-child) {
+        margin-bottom: 50px;
+        @include mix.smallScreen() {
+          margin-bottom: 0;
+        }
+      }
+      @include mix.smallScreen() {
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+      &.active {
+        .number {
+          background-color: map-get(
+            $map: vars.$primaryColors,
+            $key: "LightBlue"
+          );
+          color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+        }
+      }
+      .number {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: 700;
+        border: 2px solid map-get($map: vars.$primaryColors, $key: "PastelBlue");
+        text-align: center;
+        line-height: 40px;
+      }
+      .step-info {
+        margin-left: 15px;
+        @include mix.smallScreen() {
+          display: none;
+        }
+        span {
+          display: block;
+          font-size: 18px;
+          font-weight: 400;
+          margin-bottom: 10px;
+          color: map-get($map: vars.$primaryColors, $key: "PastelBlue");
+          text-transform: uppercase;
+        }
+        h3 {
+          color: map-get($map: vars.$natural, $key: "White");
+          font-size: 20px;
+          font-weight: 400;
+          letter-spacing: 1px;
+          line-height: 0;
+        }
+      }
+    }
+  }
+}

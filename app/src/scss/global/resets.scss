@@ -3,6 +3,7 @@ button {
   display: block;
   border: none;
   background: none;
+  font-family: inherit;
   &:focus {
     outline: none;
   }

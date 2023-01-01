@@ -1,18 +1,495 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @forward "./globals.scss";
- *   | ^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   app\src\scss\global\_index.scss 1:1  @use
- *   app\src\scss\main.scss 1:1           root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @forward \"./globals.scss\";\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   app\\src\\scss\\global\\_index.scss 1:1  @use\a   app\\src\\scss\\main.scss 1:1           root stylesheet";
+html {
+  font-size: 100%;
+  line-height: 1.6;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+input,
+button {
+  display: block;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+@media (max-width: 767px) {
+  .button-container {
+    top: 110%;
+    left: -6.5%;
+    background-color: hsl(0deg, 0%, 100%);
+    width: 111.6%;
+    padding: 74px 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+.button-container span.next {
+  padding: 14px 7px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: hsl(0deg, 0%, 100%);
+  background-color: hsl(213deg, 96%, 18%);
+  display: block;
+  width: 119px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.button-container span.next.info-btn {
+  margin-left: 81%;
+}
+.button-container span.next.plan-btn {
+  margin-left: 74%;
+}
+@media (max-width: 767px) {
+  .button-container span.next {
+    position: absolute;
+    top: 10.3px;
+    width: 119px;
+    right: 6px;
+  }
+}
+.button-container span.go-back {
+  display: block;
+  width: 81px;
+  color: hsl(231deg, 11%, 63%);
+  font-size: 18px;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .button-container span.go-back {
+    transform: translateY(-37px);
+  }
+}
+
+.main-box {
+  background-color: hsl(231deg, 100%, 99%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 27px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(213deg, 96%, 18%);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(32px);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .conainer {
+    width: 95%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .conainer {
+    width: 95%;
+  }
+}
+@media (min-width: 1200px) {
+  .conainer {
+    width: 1170px;
+  }
+}
+body {
+  background-color: hsl(217deg, 100%, 97%);
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+@media (max-width: 767px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+
+main.main {
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+  padding: 0 150px 0 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 150px;
+}
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  main.main {
+    width: 90%;
+    padding: 0 50px 0 10px;
+    gap: 50px;
+  }
+}
+@media (max-width: 767px) {
+  main.main {
+    width: 96%;
+    height: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+
+aside {
+  background-image: url("../../../../assets/images/bg-sidebar-desktop.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 274px;
+  height: calc(100% - 20px);
+  border-radius: 10px;
+}
+@media (max-width: 767px) {
+  aside {
+    position: absolute;
+    left: -2%;
+    top: 0;
+    border-radius: 0;
+    height: 172px;
+    width: 104%;
+    background-image: url("../../../../assets/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+aside ul.steps-list {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 10px 30px;
+}
+@media (max-width: 767px) {
+  aside ul.steps-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+aside ul.steps-list li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  user-select: none;
+  transition: 300ms;
+}
+aside ul.steps-list li:not(:last-child) {
+  margin-bottom: 50px;
+}
+@media (max-width: 767px) {
+  aside ul.steps-list li:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 767px) {
+  aside ul.steps-list li:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+aside ul.steps-list li.active .number {
+  background-color: hsl(206deg, 94%, 87%);
+  color: hsl(213deg, 96%, 18%);
+}
+aside ul.steps-list li .number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid hsl(228deg, 100%, 84%);
+  text-align: center;
+  line-height: 40px;
+}
+aside ul.steps-list li .step-info {
+  margin-left: 15px;
+}
+@media (max-width: 767px) {
+  aside ul.steps-list li .step-info {
+    display: none;
+  }
+}
+aside ul.steps-list li .step-info span {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: hsl(228deg, 100%, 84%);
+  text-transform: uppercase;
+}
+aside ul.steps-list li .step-info h3 {
+  color: hsl(0deg, 0%, 100%);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 0;
+}
+
+.steps {
+  z-index: 15;
+  flex: 1;
+  height: 90%;
+  box-shadow: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .steps {
+    position: absolute;
+    top: 120px;
+    width: 96%;
+    left: 2%;
+    height: auto;
+    border-radius: 10px;
+    padding-left: 15px;
+  }
+}
+.steps .step-box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+}
+.steps .step-box.active {
+  opacity: 1;
+  visibility: visible;
+}
+@media (max-width: 767px) {
+  .steps .step-box {
+    position: relative;
+    height: auto;
+    padding-bottom: 10px;
+    display: none;
+  }
+  .steps .step-box.active {
+    display: block;
+  }
+}
+.steps .step-box h1 {
+  color: hsl(213deg, 96%, 18%);
+  font-size: 3vmax;
+  margin-bottom: 1vmax;
+  letter-spacing: 1px;
+}
+.steps .step-box p {
+  color: hsl(231deg, 11%, 63%);
+  letter-spacing: 0.7px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.info label {
+  margin-top: 2vmax;
+  display: block;
+  color: hsl(213deg, 96%, 18%);
+  font-size: 19px;
+  font-weight: 600;
+}
+.info input {
+  width: calc(100% - 15px);
+  border: 1px solid hsl(231deg, 11%, 63%);
+  padding: 14px 0 14px 15px;
+  border-radius: 4px;
+  color: hsl(213deg, 96%, 18%);
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+}
+.info input::placeholder {
+  color: hsl(231deg, 11%, 63%);
+  letter-spacing: 0.7px;
+  font-weight: 700;
+  font-size: 17px;
+}
+.info input:focus {
+  border-color: hsl(213deg, 96%, 18%);
+}
+.info input.error {
+  border-color: hsl(354deg, 84%, 57%);
+}
+.info .error-text {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 5px;
+  color: hsl(354deg, 84%, 57%);
+  font-weight: 700;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+}
+.info .error-text.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.plan .plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 200px;
+  gap: 15px;
+  margin-top: 30px;
+}
+@media (max-width: 767px) {
+  .plan .plans {
+    width: calc(100% - 15px);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 150px);
+  }
+}
+.plan .plans .plan {
+  border: 1px solid hsl(231deg, 11%, 63%);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 300ms;
+}
+.plan .plans .plan.chosed {
+  border-color: hsl(213deg, 96%, 18%);
+  background-color: hsl(217deg, 100%, 97%);
+}
+.plan .plans .plan h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: hsl(213deg, 96%, 18%);
+  letter-spacing: 1px;
+}
+.plan .plans .plan span.billing {
+  color: hsl(231deg, 11%, 63%);
+  letter-spacing: 0.7px;
+  font-weight: 300;
+  font-size: 17px;
+}
+.plan .monthly-yearly {
+  width: 100%;
+  padding-block: 15px;
+  background-color: hsl(217deg, 100%, 97%);
+  letter-spacing: 0.7px;
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 6px;
+  gap: 25px;
+  margin-top: 30px;
+}
+@media (max-width: 767px) {
+  .plan .monthly-yearly {
+    width: calc(100% - 15px);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
