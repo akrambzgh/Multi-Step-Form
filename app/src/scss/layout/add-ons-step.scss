@@ -1,0 +1,73 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+.add-ons {
+  .add-ons-container {
+    @include mix.flex(center, center, column);
+    margin-top: 20px;
+    .add-on {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid map-get($map: vars.$natural, $key: "CoolGray");
+      @include mix.flex(space-between, center, row);
+      cursor: pointer;
+      user-select: none;
+      transition: 300ms;
+      &:hover {
+        border-color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+      }
+      &.active-add-on {
+        border-color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+        background-color: map-get($map: vars.$natural, $key: "Magnolia");
+        .checkbox {
+          @include mix.imageSet("../../../../assets/images/icon-checkmark.svg");
+          background-color: map-get(
+            $map: vars.$primaryColors,
+            $key: "PurplishBlue"
+          );
+          border-color: map-get(
+            $map: vars.$primaryColors,
+            $key: "PurplishBlue"
+          );
+        }
+      }
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      .left {
+        @include mix.flex(flex-start, center, row);
+        gap: 15px;
+        .checkbox {
+          width: 30px;
+          height: 30px;
+          border: 1px solid map-get($map: vars.$natural, $key: "CoolGray");
+          border-radius: 4px;
+          user-select: none;
+          cursor: pointer;
+          transition: 300ms;
+        }
+        .add-on-info {
+          h3 {
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+          }
+          span {
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: map-get($map: vars.$natural, $key: "CoolGray");
+          }
+        }
+      }
+      span.add-on-bill {
+        font-size: 19px;
+        color: map-get($map: vars.$primaryColors, $key: "PurplishBlue");
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

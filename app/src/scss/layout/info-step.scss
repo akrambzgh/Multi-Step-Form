@@ -4,14 +4,13 @@
 
 .info {
   label {
-    margin-top: 2vmax;
     display: block;
     color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
     font-size: 19px;
     font-weight: 600;
   }
   input {
-    width: calc(100% - 15px);
+    width: 100%;
     border: 1px solid map-get($map: vars.$natural, $key: "CoolGray");
     padding: 14px 0 14px 15px;
     border-radius: 4px;
@@ -19,6 +18,9 @@
     font-size: 17px;
     font-weight: 600;
     display: block;
+    @include mix.smallScreen() {
+      width: calc(100% - 15px);
+    }
     &::placeholder {
       color: map-get($map: vars.$natural, $key: "CoolGray");
       letter-spacing: 0.7px;

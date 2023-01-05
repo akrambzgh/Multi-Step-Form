@@ -16,11 +16,12 @@
     padding: 74px 50px 0;
     @include mix.flex(space-between, center, row);
   }
-  span.next {
+  .next,
+  .confirm {
     padding: 14px 7px;
     border-radius: 4px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     color: map-get($map: vars.$natural, $key: "White");
     background-color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
     display: block;
@@ -41,12 +42,20 @@
       right: 6px;
     }
   }
-  span.go-back {
+  .confirm {
+    background-color: map-get($map: vars.$primaryColors, $key: "PurplishBlue");
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .go-back {
     display: block;
     width: 81px;
+    padding: 15px 0;
     color: map-get($map: vars.$natural, $key: "CoolGray");
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
+    cursor: pointer;
+    user-select: none;
     @include mix.smallScreen() {
       transform: translateY(-37px);
     }

@@ -3,10 +3,8 @@
 @use "../abstracts/mixins.scss" as mix;
 
 aside {
-  @include mix.imageSet(
-    "../../../../assets/images/bg-sidebar-desktop.svg",
-    cover
-  );
+  @include mix.imageSet("../../../../assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
 
   width: 274px;
   height: calc(100% - 20px);
@@ -18,10 +16,8 @@ aside {
     border-radius: 0;
     height: 172px;
     width: 104%;
-    @include mix.imageSet(
-      "../../../../assets/images/bg-sidebar-mobile.svg",
-      cover
-    );
+    @include mix.imageSet("../../../../assets/images/bg-sidebar-mobile.svg");
+    background-size: cover;
   }
   ul.steps-list {
     height: 100%;

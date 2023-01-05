@@ -72,11 +72,12 @@ p {
     flex-direction: row;
   }
 }
-.button-container span.next {
+.button-container .next,
+.button-container .confirm {
   padding: 14px 7px;
   border-radius: 4px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   color: hsl(0deg, 0%, 100%);
   background-color: hsl(213deg, 96%, 18%);
   display: block;
@@ -85,29 +86,40 @@ p {
   cursor: pointer;
   user-select: none;
 }
-.button-container span.next.info-btn {
+.button-container .next.info-btn,
+.button-container .confirm.info-btn {
   margin-left: 81%;
 }
-.button-container span.next.plan-btn {
+.button-container .next.plan-btn,
+.button-container .confirm.plan-btn {
   margin-left: 74%;
 }
 @media (max-width: 767px) {
-  .button-container span.next {
+  .button-container .next,
+  .button-container .confirm {
     position: absolute;
     top: 10.3px;
     width: 119px;
     right: 6px;
   }
 }
-.button-container span.go-back {
+.button-container .confirm {
+  background-color: hsl(243deg, 100%, 62%);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.button-container .go-back {
   display: block;
   width: 81px;
+  padding: 15px 0;
   color: hsl(231deg, 11%, 63%);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
+  cursor: pointer;
+  user-select: none;
 }
 @media (max-width: 767px) {
-  .button-container span.go-back {
+  .button-container .go-back {
     transform: translateY(-37px);
   }
 }
@@ -159,7 +171,7 @@ p {
   border-radius: 50%;
 }
 
-input:checked + .slider:before {
+.switch.checked .slider:before {
   transform: translateX(32px);
 }
 
@@ -382,17 +394,17 @@ aside ul.steps-list li .step-info h3 {
   letter-spacing: 0.7px;
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: 2vmax;
 }
 
 .info label {
-  margin-top: 2vmax;
   display: block;
   color: hsl(213deg, 96%, 18%);
   font-size: 19px;
   font-weight: 600;
 }
 .info input {
-  width: calc(100% - 15px);
+  width: 100%;
   border: 1px solid hsl(231deg, 11%, 63%);
   padding: 14px 0 14px 15px;
   border-radius: 4px;
@@ -400,6 +412,11 @@ aside ul.steps-list li .step-info h3 {
   font-size: 17px;
   font-weight: 600;
   display: block;
+}
+@media (max-width: 767px) {
+  .info input {
+    width: calc(100% - 15px);
+  }
 }
 .info input::placeholder {
   color: hsl(231deg, 11%, 63%);
@@ -435,7 +452,6 @@ aside ul.steps-list li .step-info h3 {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 200px;
   gap: 15px;
-  margin-top: 30px;
 }
 @media (max-width: 767px) {
   .plan .plans {
@@ -444,7 +460,7 @@ aside ul.steps-list li .step-info h3 {
     grid-template-rows: repeat(3, 150px);
   }
 }
-.plan .plans .plan {
+.plan .plans .plan-box {
   border: 1px solid hsl(231deg, 11%, 63%);
   border-radius: 10px;
   padding: 20px;
@@ -453,23 +469,25 @@ aside ul.steps-list li .step-info h3 {
   align-items: flex-start;
   flex-direction: column;
   cursor: pointer;
+  user-select: none;
   transition: 300ms;
 }
-.plan .plans .plan.chosed {
+.plan .plans .plan-box.chosed {
   border-color: hsl(213deg, 96%, 18%);
   background-color: hsl(217deg, 100%, 97%);
 }
-.plan .plans .plan h3 {
+.plan .plans .plan-box h3 {
   font-size: 22px;
   font-weight: 700;
   color: hsl(213deg, 96%, 18%);
   letter-spacing: 1px;
 }
-.plan .plans .plan span.billing {
+.plan .plans .plan-box span.billing {
   color: hsl(231deg, 11%, 63%);
   letter-spacing: 0.7px;
   font-weight: 300;
   font-size: 17px;
+  transition: 300ms;
 }
 .plan .monthly-yearly {
   width: 100%;
@@ -490,6 +508,140 @@ aside ul.steps-list li .step-info h3 {
   .plan .monthly-yearly {
     width: calc(100% - 15px);
   }
+}
+
+.add-ons .add-ons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.add-ons .add-ons-container .add-on {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid hsl(231deg, 11%, 63%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  user-select: none;
+  transition: 300ms;
+}
+.add-ons .add-ons-container .add-on:hover {
+  border-color: hsl(213deg, 96%, 18%);
+}
+.add-ons .add-ons-container .add-on.active-add-on {
+  border-color: hsl(213deg, 96%, 18%);
+  background-color: hsl(217deg, 100%, 97%);
+}
+.add-ons .add-ons-container .add-on.active-add-on .checkbox {
+  background-image: url("../../../../assets/images/icon-checkmark.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: hsl(243deg, 100%, 62%);
+  border-color: hsl(243deg, 100%, 62%);
+}
+.add-ons .add-ons-container .add-on:not(:last-child) {
+  margin-bottom: 20px;
+}
+.add-ons .add-ons-container .add-on .left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+}
+.add-ons .add-ons-container .add-on .left .checkbox {
+  width: 30px;
+  height: 30px;
+  border: 1px solid hsl(231deg, 11%, 63%);
+  border-radius: 4px;
+  user-select: none;
+  cursor: pointer;
+  transition: 300ms;
+}
+.add-ons .add-ons-container .add-on .left .add-on-info h3 {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: hsl(213deg, 96%, 18%);
+}
+.add-ons .add-ons-container .add-on .left .add-on-info span {
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: hsl(231deg, 11%, 63%);
+}
+.add-ons .add-ons-container .add-on span.add-on-bill {
+  font-size: 19px;
+  color: hsl(243deg, 100%, 62%);
+  letter-spacing: 1px;
+}
+
+.summary .summaries {
+  background-color: hsl(217deg, 100%, 97%);
+  border-radius: 10px;
+  padding: 15px;
+}
+@media (max-width: 767px) {
+  .summary .summaries {
+    width: calc(100% - 15px);
+  }
+}
+.summary .summaries .plan-summary {
+  border-bottom: 1px solid hsl(231deg, 11%, 63%);
+  padding-block: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.summary .summaries .plan-summary .type-mode,
+.summary .summaries .plan-summary .summary-number {
+  font-size: 22px;
+  font-weight: 700;
+  color: hsl(213deg, 96%, 18%);
+}
+.summary .summaries .add-ons-summaries .add-on-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px 0;
+}
+.summary .summaries .add-ons-summaries .add-on-summary h2 {
+  color: hsl(213deg, 96%, 18%);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.summary .summaries .add-ons-summaries .add-on-summary span {
+  color: hsl(231deg, 11%, 63%);
+}
+.summary .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20px;
+}
+@media (max-width: 767px) {
+  .summary .total {
+    width: calc(100% - 15px);
+  }
+}
+.summary .total span {
+  color: gray;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.summary .total h2 {
+  color: hsl(243deg, 100%, 62%);
+  font-size: 29px;
+  letter-spacing: 1px;
 }
 
 /*# sourceMappingURL=styles.css.map */

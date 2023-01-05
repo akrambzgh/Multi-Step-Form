@@ -1,0 +1,57 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+.summary {
+  .summaries {
+    background-color: map-get($map: vars.$natural, $key: "Magnolia");
+    border-radius: 10px;
+    padding: 15px;
+    @include mix.smallScreen() {
+      width: calc(100% - 15px);
+    }
+    .plan-summary {
+      border-bottom: 1px solid map-get($map: vars.$natural, $key: "CoolGray");
+      padding-block: 15px;
+      @include mix.flex(space-between, center, row);
+      .type-mode,
+      .summary-number {
+        font-size: 22px;
+        font-weight: 700;
+        color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+      }
+    }
+    .add-ons-summaries {
+      .add-on-summary {
+        @include mix.flex(space-between, center, row);
+        padding: 10px 0;
+        h2 {
+          color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+          font-size: 18px;
+          font-weight: 400;
+          letter-spacing: 1px;
+        }
+        span {
+          color: map-get($map: vars.$natural, $key: "CoolGray");
+        }
+      }
+    }
+  }
+  .total {
+    @include mix.flex(space-between, center, row);
+    margin-top: 20px;
+    @include mix.smallScreen() {
+      width: calc(100% - 15px);
+    }
+    span {
+      color: gray;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    h2 {
+      color: map-get($map: vars.$primaryColors, $key: "PurplishBlue");
+      font-size: 29px;
+      letter-spacing: 1px;
+    }
+  }
+}

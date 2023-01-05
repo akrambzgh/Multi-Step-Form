@@ -17,7 +17,6 @@ body {
 main.main {
   width: 80%;
   height: 90%;
-  // position: relative;
   border-radius: 10px;
   padding: 0 150px 0 10px;
   @include mix.flex(flex-start, center, row);

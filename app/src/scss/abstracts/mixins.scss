@@ -11,11 +11,10 @@
   }
 }
 
-@mixin imageSet($url, $size) {
+@mixin imageSet($url) {
   background-image: url($url);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: $size;
 }
 
 @mixin position($ps, $tp, $lf) {
