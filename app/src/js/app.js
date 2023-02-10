@@ -250,9 +250,9 @@ allNextStepButtons.forEach((nextButton) => {
         allStepsButtons[3].classList.add("active");
       }
       // if (
-      //   !allAddOns[0].classList.contains(".active-add-on") &&
-      //   !allAddOns[1].classList.contains(".active-add-on") &&
-      //   !allAddOns[2].classList.contains(".active-add-on")
+      //   !allAddOns[0].classList.contains("active-add-on") &&
+      //   !allAddOns[1].classList.contains("active-add-on") &&
+      //   !allAddOns[2].classList.contains("active-add-on")
       // ) {
       //   addOnsStep.classList.add("active");
       //   summaryStep.classList.remove("active");
@@ -271,33 +271,53 @@ allNextStepButtons.forEach((nextButton) => {
       let addOnSummariesPrice = document.querySelectorAll(
         ".add-on-summary span"
       );
-      console.log(addOnSummariesTitle[0]);
       let allChosedAddOns = document.querySelectorAll(
         ".active-add-on .add-on-bill"
       );
+      let totalPrice = document.querySelector(".total h2");
       if (mode == "yearly") {
         planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(Yearly)`;
         planSummary.textContent = `$${chosedPlanBill}/yr`;
-        addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
-          "data-addOnTitle"
-        )}`;
-        addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
-          "data-addOnBill"
-        )}$/yr`;
-        addOnSummariesTitle[1].textContent = `${allChosedAddOns[1].getAttribute(
-          "data-addOnTitle"
-        )}`;
-        addOnSummariesPrice[1].textContent = `+${allChosedAddOns[1].getAttribute(
-          "data-addOnBill"
-        )}$/yr`;
-        addOnSummariesTitle[2].textContent = `${allChosedAddOns[2].getAttribute(
-          "data-addOnTitle"
-        )}`;
-        addOnSummariesPrice[2].textContent = `+${allChosedAddOns[2].getAttribute(
-          "data-addOnBill"
-        )}$/yr`;
+        if (allAddOns[0].classList.contains("active-add-on")) {
+          addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/yr`;
+          totalPrice.textContent = `${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill"))
+          }/yr`;
+        }
+        if (allAddOns[1].classList.contains("active-add-on")) {
+          addOnSummariesTitle[1].textContent = `${allChosedAddOns[1].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[1].textContent = `+${allChosedAddOns[1].getAttribute(
+            "data-addOnBill"
+          )}$/yr`;
+          totalPrice.textContent = `${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill")) +
+            parseInt(allChosedAddOns[1].getAttribute("data-addOnBill"))
+          }/yr`;
+        }
+        if (allAddOns[2].classList.contains("active-add-on")) {
+          addOnSummariesTitle[2].textContent = `${allChosedAddOns[2].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[2].textContent = `+${allChosedAddOns[2].getAttribute(
+            "data-addOnBill"
+          )}$/yr`;
+          totalPrice.textContent = `${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill")) +
+            parseInt(allChosedAddOns[1].getAttribute("data-addOnBill")) +
+            parseInt(allChosedAddOns[2].getAttribute("data-addOnBill"))
+          }/yr`;
+        }
         addOnSummaries[0].classList.add("show");
-        console.log(allChosedAddOns[0].getAttribute("data-addOnBill"));
       } else {
         planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(Monthly)`;
         planSummary.textContent = `$${chosedPlanBill}/mo`;
@@ -307,6 +327,7 @@ allNextStepButtons.forEach((nextButton) => {
     }
   });
 });
+
 // Go Back Button
 let goBackButtons = document.querySelectorAll(".go-back");
 goBackButtons.forEach((goBackButton) => {
