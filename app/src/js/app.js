@@ -150,7 +150,7 @@ allNextStepButtons.forEach((nextButton) => {
       }
       // Name Input
       if (nameInput.value == "") {
-        p(
+        InputdetectError(
           nameInput,
           nameErrorText,
           infoStep,
@@ -167,7 +167,7 @@ allNextStepButtons.forEach((nextButton) => {
         for (let n = 0; n < numbersArray.length; n++) {
           const numbersInputArrayElement = numbersArray[n];
           if (nameInputArrayElement == numbersInputArrayElement) {
-            p(
+            InputdetectError(
               nameInput,
               nameErrorText,
               infoStep,
@@ -180,7 +180,7 @@ allNextStepButtons.forEach((nextButton) => {
       }
       // Email Address Input
       if (emailAddressInput.value == "") {
-        p(
+        InputdetectError(
           emailAddressInput,
           emailAddressErrorText,
           infoStep,
@@ -191,7 +191,7 @@ allNextStepButtons.forEach((nextButton) => {
       }
       // Phone Number Input
       if (phoneNumberInput.value == "") {
-        p(
+        InputdetectError(
           phoneNumberInput,
           phoneNumberErrorText,
           infoStep,
@@ -211,7 +211,7 @@ allNextStepButtons.forEach((nextButton) => {
             phoneNumberInputArrayElement == lettersArrayElement ||
             phoneNumberInputArrayElement == lettersArrayElement.toLowerCase()
           ) {
-            p(
+            InputdetectError(
               phoneNumberInput,
               phoneNumberErrorText,
               infoStep,
@@ -249,27 +249,61 @@ allNextStepButtons.forEach((nextButton) => {
         allStepsButtons[2].classList.remove("active");
         allStepsButtons[3].classList.add("active");
       }
+      // if (
+      //   !allAddOns[0].classList.contains(".active-add-on") &&
+      //   !allAddOns[1].classList.contains(".active-add-on") &&
+      //   !allAddOns[2].classList.contains(".active-add-on")
+      // ) {
+      //   addOnsStep.classList.add("active");
+      //   summaryStep.classList.remove("active");
+      //   allStepsButtons[2].classList.add("active");
+      //   allStepsButtons[3].classList.remove("active");
+      // }
       let chosedPlan = document.querySelector(".chosed");
       let chosedPlanType = chosedPlan.classList[1];
+      let planType = document.querySelector(".type-mode");
+      let planSummary = document.querySelector(".summary-number");
       let chosedPlanBill = document
         .querySelector(".chosed .billing")
         .getAttribute("data-bill");
-      let chosedAddOn = document.querySelectorAll(".active-add-on");
-      chosedAddOn.forEach((addOn) => {
-        let chosedAddOnTitle = addOn.getAttribute("data-addOnTitle");
-        let allChosedAddOnBill = document.querySelectorAll(".add-on-bill");
-        allChosedAddOnBill.forEach((addOnBill) => {
-          let addOnBillAtr = addOnBill.getAttribute("data-addOnBill");
-          console.log(
-            `${chosedPlanType} ${chosedPlanBill} ${chosedAddOnTitle} ${addOnBillAtr}`
-          );
-          let gk = document.querySelector(".gk");
-          gk.textContent = `${chosedPlanType} ${chosedPlanBill} ${chosedAddOnTitle} ${addOnBillAtr}`;
-        });
-      });
+      let addOnSummaries = document.querySelectorAll(".add-on-summary");
+      let addOnSummariesTitle = document.querySelectorAll(".add-on-summary h2");
+      let addOnSummariesPrice = document.querySelectorAll(
+        ".add-on-summary span"
+      );
+      console.log(addOnSummariesTitle[0]);
+      let allChosedAddOns = document.querySelectorAll(
+        ".active-add-on .add-on-bill"
+      );
+      if (mode == "yearly") {
+        planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(Yearly)`;
+        planSummary.textContent = `$${chosedPlanBill}/yr`;
+        addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
+          "data-addOnTitle"
+        )}`;
+        addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
+          "data-addOnBill"
+        )}$/yr`;
+        addOnSummariesTitle[1].textContent = `${allChosedAddOns[1].getAttribute(
+          "data-addOnTitle"
+        )}`;
+        addOnSummariesPrice[1].textContent = `+${allChosedAddOns[1].getAttribute(
+          "data-addOnBill"
+        )}$/yr`;
+        addOnSummariesTitle[2].textContent = `${allChosedAddOns[2].getAttribute(
+          "data-addOnTitle"
+        )}`;
+        addOnSummariesPrice[2].textContent = `+${allChosedAddOns[2].getAttribute(
+          "data-addOnBill"
+        )}$/yr`;
+        addOnSummaries[0].classList.add("show");
+        console.log(allChosedAddOns[0].getAttribute("data-addOnBill"));
+      } else {
+        planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(Monthly)`;
+        planSummary.textContent = `$${chosedPlanBill}/mo`;
+      }
     }
     if (nextButton.classList.contains("summary-btn")) {
-      console.log("summary");
     }
   });
 });
@@ -280,14 +314,20 @@ goBackButtons.forEach((goBackButton) => {
     if (goBackButton.classList.contains("plan-back")) {
       infoStep.classList.add("active");
       planStep.classList.remove("active");
+      allStepsButtons[0].classList.add("active");
+      allStepsButtons[1].classList.remove("active");
     }
     if (goBackButton.classList.contains("add-ons-back")) {
       planStep.classList.add("active");
       addOnsStep.classList.remove("active");
+      allStepsButtons[1].classList.add("active");
+      allStepsButtons[2].classList.remove("active");
     }
     if (goBackButton.classList.contains("summary-back")) {
       addOnsStep.classList.add("active");
       summaryStep.classList.remove("active");
+      allStepsButtons[2].classList.add("active");
+      allStepsButtons[3].classList.remove("active");
     }
   });
 });

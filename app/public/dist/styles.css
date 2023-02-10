@@ -585,6 +585,7 @@ aside ul.steps-list li .step-info h3 {
   background-color: hsl(217deg, 100%, 97%);
   border-radius: 10px;
   padding: 15px;
+  height: auto;
 }
 @media (max-width: 767px) {
   .summary .summaries {
@@ -617,6 +618,11 @@ aside ul.steps-list li .step-info h3 {
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
 }
 .summary .summaries .add-ons-summaries .add-on-summary span {
   color: hsl(231deg, 11%, 63%);

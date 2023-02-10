@@ -7,6 +7,7 @@
     background-color: map-get($map: vars.$natural, $key: "Magnolia");
     border-radius: 10px;
     padding: 15px;
+    height: auto;
     @include mix.smallScreen() {
       width: calc(100% - 15px);
     }
@@ -30,6 +31,8 @@
           font-size: 18px;
           font-weight: 400;
           letter-spacing: 1px;
+          @include mix.flex(flex-start, center, row);
+          gap: 5px;
         }
         span {
           color: map-get($map: vars.$natural, $key: "CoolGray");
