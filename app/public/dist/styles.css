@@ -49,6 +49,10 @@ p {
   margin: 0;
 }
 
+.add-ons .button-container {
+  width: 119.1%;
+}
+
 .button-container {
   position: absolute;
   bottom: 0;
@@ -62,9 +66,9 @@ p {
 @media (max-width: 767px) {
   .button-container {
     top: 110%;
-    left: -6.5%;
+    left: -10.5%;
     background-color: hsl(0deg, 0%, 100%);
-    width: 111.6%;
+    width: 112.6%;
     padding: 74px 50px 0;
     display: flex;
     justify-content: space-between;
@@ -223,9 +227,9 @@ main.main {
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
   main.main {
-    width: 90%;
     padding: 0 50px 0 10px;
     gap: 50px;
+    width: 98%;
   }
 }
 @media (max-width: 767px) {
@@ -348,12 +352,17 @@ aside ul.steps-list li .step-info h3 {
   flex-direction: row;
   position: relative;
 }
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .steps {
+    width: 65%;
+  }
+}
 @media (max-width: 767px) {
   .steps {
-    position: absolute;
+    position: relative;
     top: 120px;
-    width: 96%;
-    left: 2%;
+    width: 171%;
+    left: -3%;
     height: auto;
     border-radius: 10px;
     padding-left: 15px;
@@ -367,6 +376,11 @@ aside ul.steps-list li .step-info h3 {
   visibility: hidden;
   transition: 300ms;
 }
+@media (max-width: 767px) {
+  .steps .step-box {
+    position: relative;
+  }
+}
 .steps .step-box.active {
   opacity: 1;
   visibility: visible;
@@ -379,7 +393,13 @@ aside ul.steps-list li .step-info h3 {
     display: none;
   }
   .steps .step-box.active {
+    position: absolute;
+    width: 96%;
     display: block;
+    height: 100%;
+  }
+  .steps .step-box.active.add-ons {
+    width: 90%;
   }
 }
 .steps .step-box h1 {
@@ -667,6 +687,7 @@ aside ul.steps-list li .step-info h3 {
   opacity: 1;
   visibility: visible;
   z-index: 55;
+  border-radius: 20px;
 }
 .thank-section img {
   margin-bottom: 30px;

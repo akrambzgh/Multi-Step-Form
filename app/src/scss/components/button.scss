@@ -2,6 +2,10 @@
 @use "../abstracts/function.scss" as fun;
 @use "../abstracts/mixins.scss" as mix;
 
+.add-ons .button-container {
+  width: 119.1%;
+}
+
 .button-container {
   position: absolute;
   bottom: 0;
@@ -10,9 +14,9 @@
   @include mix.flex(space-between, center, row);
   @include mix.smallScreen() {
     top: 110%;
-    left: -6.5%;
+    left: -10.5%;
     background-color: map-get($map: vars.$natural, $key: "White");
-    width: 111.6%;
+    width: 112.6%;
     padding: 74px 50px 0;
     @include mix.flex(space-between, center, row);
   }

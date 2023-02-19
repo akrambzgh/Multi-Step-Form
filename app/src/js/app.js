@@ -407,6 +407,10 @@ allNextStepButtons.forEach((nextButton) => {
 const confirmButton = document.querySelector(".confirm");
 confirmButton.addEventListener("click", () => {
   thanksSection.classList.add("show");
+  let allButtonContainers = document.querySelectorAll(".button-container");
+  allButtonContainers.forEach((btn) => {
+    btn.style.display = "none";
+  });
 });
 
 // Go Back Button

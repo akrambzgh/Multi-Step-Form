@@ -22,9 +22,9 @@ main.main {
   @include mix.flex(flex-start, center, row);
   gap: 150px;
   @media screen and (max-width: 991px) and (min-width: 768px) {
-    width: 90%;
     padding: 0 50px 0 10px;
     gap: 50px;
+    width: 98%;
   }
   @include mix.smallScreen() {
     width: 96%;
