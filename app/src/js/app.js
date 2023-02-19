@@ -1,24 +1,24 @@
 let allStepsButtons = document.querySelectorAll(".step-btn");
 let allSteps = document.querySelectorAll(".step-box");
-allStepsButtons.forEach((stepButton) => {
-  stepButton.addEventListener("click", (e) => {
-    allStepsButtons.forEach((stepButton) => {
-      stepButton.classList.remove("active");
-    });
-    e.currentTarget.classList.add("active");
-    allSteps.forEach((step) => {
-      if (
-        stepButton.getAttribute("data-stepType") ==
-        step.getAttribute("data-sectionType")
-      ) {
-        allSteps.forEach((step) => {
-          step.classList.remove("active");
-        });
-        step.classList.add("active");
-      }
-    });
-  });
-});
+// allStepsButtons.forEach((stepButton) => {
+//   stepButton.addEventListener("click", (e) => {
+//     allStepsButtons.forEach((stepButton) => {
+//       stepButton.classList.remove("active");
+//     });
+//     e.currentTarget.classList.add("active");
+//     allSteps.forEach((step) => {
+//       if (
+//         stepButton.getAttribute("data-stepType") ==
+//         step.getAttribute("data-sectionType")
+//       ) {
+//         allSteps.forEach((step) => {
+//           step.classList.remove("active");
+//         });
+//         step.classList.add("active");
+//       }
+//     });
+//   });
+// });
 
 let allNextStepButtons = document.querySelectorAll(".next");
 
@@ -34,6 +34,7 @@ let infoStep = document.querySelector(".info");
 let planStep = document.querySelector(".plan");
 let addOnsStep = document.querySelector(".add-ons");
 let summaryStep = document.querySelector(".summary");
+let thanksSection = document.querySelector(".thank-section");
 
 let allPlans = document.querySelectorAll(".plan-box");
 allPlans.forEach((plan) => {
@@ -249,16 +250,16 @@ allNextStepButtons.forEach((nextButton) => {
         allStepsButtons[2].classList.remove("active");
         allStepsButtons[3].classList.add("active");
       }
-      // if (
-      //   !allAddOns[0].classList.contains("active-add-on") &&
-      //   !allAddOns[1].classList.contains("active-add-on") &&
-      //   !allAddOns[2].classList.contains("active-add-on")
-      // ) {
-      //   addOnsStep.classList.add("active");
-      //   summaryStep.classList.remove("active");
-      //   allStepsButtons[2].classList.add("active");
-      //   allStepsButtons[3].classList.remove("active");
-      // }
+      if (
+        !allAddOns[0].classList.contains("active-add-on") &&
+        !allAddOns[1].classList.contains("active-add-on") &&
+        !allAddOns[2].classList.contains("active-add-on")
+      ) {
+        addOnsStep.classList.add("active");
+        summaryStep.classList.remove("active");
+        allStepsButtons[2].classList.add("active");
+        allStepsButtons[3].classList.remove("active");
+      }
       let chosedPlan = document.querySelector(".chosed");
       let chosedPlanType = chosedPlan.classList[1];
       let planType = document.querySelector(".type-mode");
@@ -275,84 +276,182 @@ allNextStepButtons.forEach((nextButton) => {
         ".active-add-on .add-on-bill"
       );
       let totalPrice = document.querySelector(".total h2");
-      if (mode == "yearly") {
-        planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(Yearly)`;
-        planSummary.textContent = `$${chosedPlanBill}/yr`;
+      function totalPricesSection(type, yearlyrMonthly) {
+        planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(${yearlyrMonthly})`;
+        planSummary.textContent = `$${chosedPlanBill}/${type}`;
+        // Only One Be Chosen
         if (allAddOns[0].classList.contains("active-add-on")) {
           addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
             "data-addOnTitle"
           )}`;
           addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
             "data-addOnBill"
-          )}$/yr`;
-          totalPrice.textContent = `${
+          )}$/${type}`;
+          totalPrice.textContent = `$${
             parseInt(chosedPlanBill) +
             parseInt(allChosedAddOns[0].getAttribute("data-addOnBill"))
-          }/yr`;
+          }/${type}`;
         }
         if (allAddOns[1].classList.contains("active-add-on")) {
+          addOnSummariesTitle[1].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[1].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          totalPrice.textContent = `$${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill"))
+          }/${type}`;
+        }
+        if (allAddOns[2].classList.contains("active-add-on")) {
+          addOnSummariesTitle[2].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[2].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          totalPrice.textContent = `$${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill"))
+          }/${type}`;
+        }
+        // Tow In The Same Time
+        if (
+          allAddOns[0].classList.contains("active-add-on") &&
+          allAddOns[1].classList.contains("active-add-on")
+        ) {
           addOnSummariesTitle[1].textContent = `${allChosedAddOns[1].getAttribute(
             "data-addOnTitle"
           )}`;
           addOnSummariesPrice[1].textContent = `+${allChosedAddOns[1].getAttribute(
             "data-addOnBill"
-          )}$/yr`;
-          totalPrice.textContent = `${
+          )}$/${type}`;
+          addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          totalPrice.textContent = `$${
             parseInt(chosedPlanBill) +
             parseInt(allChosedAddOns[0].getAttribute("data-addOnBill")) +
             parseInt(allChosedAddOns[1].getAttribute("data-addOnBill"))
-          }/yr`;
+          }/${type}`;
         }
-        if (allAddOns[2].classList.contains("active-add-on")) {
+        if (
+          allAddOns[0].classList.contains("active-add-on") &&
+          allAddOns[2].classList.contains("active-add-on")
+        ) {
+          addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          addOnSummariesTitle[2].textContent = `${allChosedAddOns[1].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[2].textContent = `+${allChosedAddOns[1].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          totalPrice.textContent = `$${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill")) +
+            parseInt(allChosedAddOns[1].getAttribute("data-addOnBill"))
+          }/${type}`;
+        }
+        if (
+          allAddOns[1].classList.contains("active-add-on") &&
+          allAddOns[2].classList.contains("active-add-on")
+        ) {
+          addOnSummariesTitle[1].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[1].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          addOnSummariesTitle[2].textContent = `${allChosedAddOns[1].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[2].textContent = `+${allChosedAddOns[1].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          totalPrice.textContent = `$${
+            parseInt(chosedPlanBill) +
+            parseInt(allChosedAddOns[0].getAttribute("data-addOnBill")) +
+            parseInt(allChosedAddOns[1].getAttribute("data-addOnBill"))
+          }/${type}`;
+        }
+        if (
+          allAddOns[0].classList.contains("active-add-on") &&
+          allAddOns[1].classList.contains("active-add-on") &&
+          allAddOns[2].classList.contains("active-add-on")
+        ) {
+          addOnSummariesTitle[0].textContent = `${allChosedAddOns[0].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[0].textContent = `+${allChosedAddOns[0].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
+          addOnSummariesTitle[1].textContent = `${allChosedAddOns[1].getAttribute(
+            "data-addOnTitle"
+          )}`;
+          addOnSummariesPrice[1].textContent = `+${allChosedAddOns[1].getAttribute(
+            "data-addOnBill"
+          )}$/${type}`;
           addOnSummariesTitle[2].textContent = `${allChosedAddOns[2].getAttribute(
             "data-addOnTitle"
           )}`;
           addOnSummariesPrice[2].textContent = `+${allChosedAddOns[2].getAttribute(
             "data-addOnBill"
-          )}$/yr`;
-          totalPrice.textContent = `${
+          )}$/${type}`;
+          totalPrice.textContent = `$${
             parseInt(chosedPlanBill) +
             parseInt(allChosedAddOns[0].getAttribute("data-addOnBill")) +
             parseInt(allChosedAddOns[1].getAttribute("data-addOnBill")) +
             parseInt(allChosedAddOns[2].getAttribute("data-addOnBill"))
-          }/yr`;
+          }/${type}`;
         }
-        addOnSummaries[0].classList.add("show");
-      } else {
-        planType.textContent = `${chosedPlanType.toLocaleUpperCase()}(Monthly)`;
-        planSummary.textContent = `$${chosedPlanBill}/mo`;
       }
-    }
-    if (nextButton.classList.contains("summary-btn")) {
+      if (mode == "yearly") {
+        totalPricesSection("yr", "Yearly");
+      } else {
+        totalPricesSection("mo", "Monthly");
+      }
     }
   });
 });
 
+// Thanks Section
+const confirmButton = document.querySelector(".confirm");
+confirmButton.addEventListener("click", () => {
+  thanksSection.classList.add("show");
+});
+
 // Go Back Button
+function goBakcFun(secOne, secTwo, btnOne, btnTwo) {
+  secOne.classList.add("active");
+  secTwo.classList.remove("active");
+  allStepsButtons[btnOne].classList.add("active");
+  allStepsButtons[btnTwo].classList.remove("active");
+}
 let goBackButtons = document.querySelectorAll(".go-back");
 goBackButtons.forEach((goBackButton) => {
   goBackButton.addEventListener("click", () => {
     if (goBackButton.classList.contains("plan-back")) {
-      infoStep.classList.add("active");
-      planStep.classList.remove("active");
-      allStepsButtons[0].classList.add("active");
-      allStepsButtons[1].classList.remove("active");
+      goBakcFun(infoStep, planStep, 0, 1);
     }
     if (goBackButton.classList.contains("add-ons-back")) {
-      planStep.classList.add("active");
-      addOnsStep.classList.remove("active");
-      allStepsButtons[1].classList.add("active");
-      allStepsButtons[2].classList.remove("active");
+      goBakcFun(planStep, addOnsStep, 1, 2);
     }
     if (goBackButton.classList.contains("summary-back")) {
-      addOnsStep.classList.add("active");
-      summaryStep.classList.remove("active");
-      allStepsButtons[2].classList.add("active");
-      allStepsButtons[3].classList.remove("active");
+      goBakcFun(addOnsStep, summaryStep, 2, 3);
     }
   });
 });
 
+// Input Check Value Fun
 function InputdetectError(
   input,
   errorText,

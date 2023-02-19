@@ -28,7 +28,6 @@ aside {
     }
     li {
       @include mix.flex(flex-start, center, row);
-      cursor: pointer;
       user-select: none;
       transition: 300ms;
       &:not(:last-child) {

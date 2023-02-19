@@ -283,7 +283,6 @@ aside ul.steps-list li {
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  cursor: pointer;
   user-select: none;
   transition: 300ms;
 }
@@ -648,6 +647,41 @@ aside ul.steps-list li .step-info h3 {
   color: hsl(243deg, 100%, 62%);
   font-size: 29px;
   letter-spacing: 1px;
+}
+
+.thank-section {
+  width: 644.8px;
+  height: 610.42px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: hsl(231deg, 100%, 99%);
+  opacity: 0;
+  visibility: hidden;
+  user-select: none;
+  transition: 300ms;
+}
+.thank-section.show {
+  opacity: 1;
+  visibility: visible;
+  z-index: 55;
+}
+.thank-section img {
+  margin-bottom: 30px;
+}
+.thank-section h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  color: hsl(213deg, 96%, 18%);
+}
+.thank-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  color: hsl(231deg, 11%, 63%);
 }
 
 /*# sourceMappingURL=styles.css.map */

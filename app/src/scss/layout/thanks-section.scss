@@ -1,0 +1,35 @@
+@use "../utils/vars.scss" as vars;
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+
+.thank-section {
+  width: 644.8px;
+  height: 610.42px;
+  text-align: center;
+  @include mix.flex(center, center, column);
+  background-color: map-get($map: vars.$natural, $key: "Alabaster");
+  opacity: 0;
+  visibility: hidden;
+  user-select: none;
+  transition: 300ms;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 55;
+  }
+  img {
+    margin-bottom: 30px;
+  }
+  h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: map-get($map: vars.$primaryColors, $key: "MarineBlue");
+  }
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: map-get($map: vars.$natural, $key: "CoolGray");
+  }
+}
